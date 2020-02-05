@@ -46,8 +46,6 @@ class Parser(private val env: Environment, private val cmdRunner: CmdRunner): Ba
     fun handle(cmd: String): Pair<Command.Status, String> {
         val lexer = BashLexer(CharStreams.fromString(cmd))
 
-        val stream = CommonTokenStream(lexer)
-
         val parser = BashParser(CommonTokenStream(lexer))
 
         return this.visit(parser.line())
