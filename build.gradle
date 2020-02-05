@@ -9,6 +9,8 @@ apply plugin: 'application'
 
 mainClassName = 'com.aytel.sd.cli.CLIKt'
 
+compileKotlin.dependsOn generateGrammarSource
+
 repositories {
     mavenCentral()
 }
