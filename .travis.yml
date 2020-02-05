@@ -3,4 +3,4 @@ jdk:
   - openjdk11
 os:
   - linux
-script: ./gradlew test
+script: ./gradlew generateGrammarSource && ./gradlew test

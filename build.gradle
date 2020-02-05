@@ -35,7 +35,3 @@ generateGrammarSource {
 test {
     useJUnitPlatform()
 }
-
-build {
-    generateTestGrammarSource()
-}

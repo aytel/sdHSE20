@@ -14,7 +14,7 @@ class CompositeTest {
         val outputStream = PrintStream(baos)
         val errorStream = PrintStream(baes)
         CLI.handle(cmd, outputStream, errorStream)
-        assertEquals(expectedOutput, baos.toString(Charset.defaultCharset()))
+        assertEquals(expectedOutput, String(baos.toByteArray()))
         assertEquals(expectedError, baes.toByteArray().isNotEmpty())
     }
 

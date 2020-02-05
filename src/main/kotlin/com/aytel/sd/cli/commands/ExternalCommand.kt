@@ -10,9 +10,9 @@ class ExternalCommand {
         process.outputStream.write(stdin.toByteArray())
         val result = process.waitFor() != 0
         return if (result) {
-            Command.Status.ERR to String(process.errorStream.readAllBytes())
+            Command.Status.ERR to String(process.errorStream.readBytes())
         } else {
-            Command.Status.OK to String(process.inputStream.readAllBytes())
+            Command.Status.OK to String(process.inputStream.readBytes())
         }
     }
 }
