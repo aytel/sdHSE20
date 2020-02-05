@@ -17,6 +17,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     antlr "org.antlr:antlr4:4.7.2"
     compile "org.antlr:antlr4-runtime:4.7.2"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.6.0"
 }
 
 compileKotlin {
@@ -29,4 +30,8 @@ compileTestKotlin {
 generateGrammarSource {
     maxHeapSize = "64m"
     arguments += ["-visitor", "-long-messages"]
+}
+
+test {
+    useJUnitPlatform()
 }

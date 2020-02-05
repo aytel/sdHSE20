@@ -15,7 +15,7 @@ class Environment {
         map[key] = value
     }
 
-    fun map(): Map<String, String> {
+    fun map(): MutableMap<String, String> {
         return map
     }
 }

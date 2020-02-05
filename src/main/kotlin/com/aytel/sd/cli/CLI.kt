@@ -22,7 +22,11 @@ class CLI {
             try {
                 val preprocessed = preprocessor.handle(cmd)
                 val (status: Command.Status, result: String) = parser.handle(preprocessed)
-                outputStream.println(result)
+                if (status == Command.Status.ERR) {
+                    errorStream.println(result)
+                } else {
+                    outputStream.println(result)
+                }
                 if (status == Command.Status.EXIT) {
                     return true
                 }
@@ -47,6 +51,10 @@ class CLI {
                     return
                 }
             }
+        }
+
+        fun resetEnv() {
+            env.map().clear()
         }
     }
 }
