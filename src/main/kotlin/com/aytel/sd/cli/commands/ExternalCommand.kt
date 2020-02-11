@@ -2,6 +2,9 @@ package com.aytel.sd.cli.commands
 
 import com.aytel.sd.cli.Environment
 
+/**
+ * Runs command which CLI doesn't have in itself.
+ */
 class ExternalCommand {
     fun runCmd(cmdName: String, args: List<String>, stdin: String, env: Environment): Pair<Command.Status, String> {
         val processBuilder = ProcessBuilder(mutableListOf(cmdName).apply { addAll(args) })

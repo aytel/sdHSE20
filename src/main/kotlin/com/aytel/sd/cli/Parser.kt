@@ -8,6 +8,9 @@ import com.aytel.sd.cli.commands.Command
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 
+/**
+ * Parses commands and visits tokens.
+ */
 class Parser(private val env: Environment, private val cmdRunner: CmdRunner): BashBaseVisitor<Pair<Command.Status, String>>() {
     override fun visitSetVariable(ctx: BashParser.SetVariableContext): Pair<Command.Status, String> {
         env.set(ctx.`var`.text, ctx.`val`.text)
