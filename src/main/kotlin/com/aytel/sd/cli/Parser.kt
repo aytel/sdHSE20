@@ -19,19 +19,19 @@ class Parser(private val env: Environment, private val cmdRunner: CmdRunner): Ba
         var currentExit = Command.Status.OK
         for (cmd in ctx.command()) {
             val cmdName = cmd.commandName().text
-            var parsedArgs = ""
+            val parsedArgs = mutableListOf<String>()
 
             for (block in cmd.args) {
                 val cur = block.text
-                parsedArgs += if (cur[0] == '\'' || cur[0] == '"') {
+                parsedArgs.add( if (cur[0] == '\'' || cur[0] == '"') {
                     cur.substring(1, cur.length - 1)
                 } else {
                     cur
-                }
+                })
             }
 
             val result: Pair<Command.Status, String> = cmdRunner.run(cmdName,
-                parsedArgs.split(" ").filter { it.isNotEmpty() }, currentOut)
+                parsedArgs.filter { it.isNotEmpty() }, currentOut)
             if (result.first == Command.Status.ERR) {
                 return result
             }
