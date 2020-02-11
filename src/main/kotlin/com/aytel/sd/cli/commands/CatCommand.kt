@@ -3,6 +3,9 @@ package com.aytel.sd.cli.commands
 import com.aytel.sd.cli.Environment
 import java.io.File
 
+/**
+ * Returns text of given file.
+ */
 class CatCommand: Command() {
     override fun run(args: List<String>, stdin: String, env: Environment): Pair<Status, String> {
         return if (args.isEmpty()) {

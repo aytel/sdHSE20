@@ -1,5 +1,8 @@
 package com.aytel.sd.cli
 
+/**
+ * Makes substitutions of variables.
+ */
 class Preprocessor(private val env: Environment) {
     fun handle(cmd: String): String {
         var result = ""

@@ -2,6 +2,9 @@ package com.aytel.sd.cli.commands
 
 import com.aytel.sd.cli.Environment
 
+/**
+ * Runs internal command if such exists and external otherwise.
+ */
 class CmdRunner(private val map: Map<String, Command>, private val env: Environment) {
     fun run(cmdName: String, args: List<String>, stdin: String): Pair<Command.Status, String> {
         return if (map.containsKey(cmdName)) {
