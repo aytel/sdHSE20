@@ -12,7 +12,8 @@ class CLI {
             "echo" to EchoCommand(),
             "wc" to WcCommand(),
             "pwd" to PwdCommand(),
-            "exit" to ExitCommand()
+            "exit" to ExitCommand(),
+            "grep" to GrepCommand()
         )
 
         private val parser: Parser = Parser(env, CmdRunner(cmdMap, env))
