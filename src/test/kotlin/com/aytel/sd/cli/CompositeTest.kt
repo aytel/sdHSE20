@@ -70,4 +70,14 @@ class CompositeTest {
             true
         )
     }
+
+    @Test
+    fun testLocationDependentCommandsAfterCd() {
+        testCmd(
+            "cd src/test/resources | cat TestFile.txt",
+            "string\n" +
+                    "another string\n" + System.lineSeparator(),
+            false
+        )
+    }
 }

@@ -8,6 +8,6 @@ import java.nio.file.FileSystems
  */
 class PwdCommand: Command() {
     override fun run(args: List<String>, stdin: String, env: Environment): Pair<Status, String> {
-        return Status.OK to FileSystems.getDefault().getPath(".").toAbsolutePath().toString()
+        return Status.OK to env.getDirectory().toString()
     }
 }

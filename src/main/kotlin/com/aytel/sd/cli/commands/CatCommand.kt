@@ -13,7 +13,7 @@ class CatCommand: Command() {
         } else {
             try {
                 val result = args.joinToString("\n") {
-                    File(it).readText()
+                    env.getDirectory(it).toFile().readText()
                 }
                 Status.OK to result
             } catch (e: Exception) {
