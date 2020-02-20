@@ -70,6 +70,7 @@ class CLI {
          */
         fun resetEnv() {
             env.map().clear()
+            env.resetDirectory()
         }
     }
 }

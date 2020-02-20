@@ -18,7 +18,7 @@ class WcCommand: Command() {
                 var lines = 0
 
                 for (name in args) {
-                    val (cbytes, cwords, clines) = count(File(name).readText())
+                    val (cbytes, cwords, clines) = count(env.getDirectory(name).toFile().readText())
                     bytes += cbytes
                     words += cwords
                     lines += clines

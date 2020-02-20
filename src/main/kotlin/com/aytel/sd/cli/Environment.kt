@@ -25,6 +25,13 @@ class Environment {
         userDirectory = newPath;
     }
 
+    /**
+     * Resets the current working directory to the original one.
+     */
+    fun resetDirectory() {
+        userDirectory = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize().toString()
+    }
+
     fun get(key: String): String {
         return if (map.containsKey(key)) {
             map.getValue(key)
