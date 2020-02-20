@@ -5,7 +5,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
-import java.nio.charset.Charset
+import java.lang.System.getProperty
+import java.nio.file.FileSystems
 
 class CompositeTest {
     private fun testCmd(cmd: String, expectedOutput: String, expectedError: Boolean) {
@@ -68,6 +69,55 @@ class CompositeTest {
             "cat NoSuchFile",
             "",
             true
+        )
+    }
+
+    @Test
+    fun testLocationDependentCatAfterCd() {
+        testCmd(
+            "cd src/test/resources | cat TestFile.txt",
+            "string\n" +
+                    "another string\n" + System.lineSeparator(),
+            false
+        )
+    }
+
+    @Test
+    fun testLocationDependentExternalAfterCd() {
+        if (getProperty("os.name") == "Linux") {
+            testCmd(
+                "cd src/test/resources | find TestFile.txt",
+                "TestFile.txt" + System.lineSeparator() + System.lineSeparator(),
+                false
+            )
+        }
+    }
+
+    @Test
+    fun testLocationDependentLsAfterCd() {
+        testCmd(
+            "cd src/test/resources | ls .",
+            "TestFile.txt" + System.lineSeparator(),
+            false
+        )
+    }
+
+    @Test
+    fun testLocationDependentPwdAfterCd() {
+        val currentPath: String =  FileSystems.getDefault().getPath(".").toAbsolutePath().normalize().toString()
+        testCmd(
+            "cd src/test/resources | pwd",
+            currentPath + "/src/test/resources" + System.lineSeparator(),
+            false
+        )
+    }
+
+    @Test
+    fun testLocationDependentWcAfterCd() {
+        testCmd(
+            "cd src/test/resources | wc TestFile.txt",
+            "22 4 3" + System.lineSeparator(),
+            false
         )
     }
 }

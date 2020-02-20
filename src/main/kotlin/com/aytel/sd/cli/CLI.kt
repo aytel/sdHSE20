@@ -15,7 +15,9 @@ class CLI {
             "echo" to EchoCommand(),
             "wc" to WcCommand(),
             "pwd" to PwdCommand(),
-            "exit" to ExitCommand()
+            "exit" to ExitCommand(),
+            "cd" to CdCommand(),
+            "ls" to LsCommand()
         )
 
         private val parser: Parser = Parser(env, CmdRunner(cmdMap, env))
@@ -68,6 +70,7 @@ class CLI {
          */
         fun resetEnv() {
             env.map().clear()
+            env.resetDirectory()
         }
     }
 }

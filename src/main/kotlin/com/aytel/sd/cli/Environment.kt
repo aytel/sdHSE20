@@ -1,10 +1,36 @@
 package com.aytel.sd.cli
 
+import java.nio.file.FileSystems
+import java.nio.file.Path
+import java.nio.file.Paths
+
 /**
  * Contains info about env.
  */
 class Environment {
+    private var userDirectory: String = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize().toString()
     private val map: MutableMap<String, String> = HashMap()
+
+    /**
+     * Returns a path taking the current working directory into accord.
+     */
+    fun getPath(pathAddition: String=""): Path {
+        return Paths.get(userDirectory, pathAddition).toAbsolutePath().normalize()
+    }
+
+    /**
+     * Changes the current working directory of the interpreter.
+     */
+    fun setDirectory(newPath: String) {
+        userDirectory = newPath
+    }
+
+    /**
+     * Resets the current working directory to the original one.
+     */
+    fun resetDirectory() {
+        userDirectory = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize().toString()
+    }
 
     fun get(key: String): String {
         return if (map.containsKey(key)) {
