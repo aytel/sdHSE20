@@ -22,7 +22,7 @@ class Environment {
      * Changes the current working directory of the interpreter.
      */
     fun setDirectory(newPath: String) {
-        userDirectory = newPath;
+        userDirectory = newPath
     }
 
     /**
