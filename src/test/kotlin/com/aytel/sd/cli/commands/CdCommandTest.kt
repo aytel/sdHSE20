@@ -80,7 +80,7 @@ class CdCommandTest {
             "",
             Command.Status.OK
         )
-        assertEquals("$oldPath/.", environment.getDirectory().toString())
+        assertEquals(oldPath, environment.getDirectory().toString())
     }
 
     @Test
@@ -110,7 +110,7 @@ class CdCommandTest {
             "",
             Command.Status.OK
         )
-        assertEquals("$oldPath/./src/test/../test/resources", environment.getDirectory().toString())
+        assertEquals("$oldPath/src/test/resources", environment.getDirectory().toString())
     }
 
     @Test
@@ -149,6 +149,6 @@ class CdCommandTest {
             "",
             Command.Status.OK
         )
-        assertEquals("$oldPath/src/test/resources/..", environment.getDirectory().toString())
+        assertEquals("$oldPath/src/test", environment.getDirectory().toString())
     }
 }

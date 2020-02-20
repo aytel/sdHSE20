@@ -8,14 +8,14 @@ import java.nio.file.Paths
  * Contains info about env.
  */
 class Environment {
-    private var userDirectory: String = FileSystems.getDefault().getPath(".").toAbsolutePath().toString()
+    private var userDirectory: String = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize().toString()
     private val map: MutableMap<String, String> = HashMap()
 
     /**
      * Returns a path taking the current working directory into accord.
      */
     fun getDirectory(pathAddition: String=""): Path {
-        return Paths.get(userDirectory, pathAddition).toAbsolutePath()
+        return Paths.get(userDirectory, pathAddition).toAbsolutePath().normalize()
     }
 
     /**
