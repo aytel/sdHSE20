@@ -14,7 +14,7 @@ class Environment {
     /**
      * Returns a path taking the current working directory into accord.
      */
-    fun getDirectory(pathAddition: String=""): Path {
+    fun getPath(pathAddition: String=""): Path {
         return Paths.get(userDirectory, pathAddition).toAbsolutePath().normalize()
     }
 

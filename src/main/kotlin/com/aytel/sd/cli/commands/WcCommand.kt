@@ -1,7 +1,6 @@
 package com.aytel.sd.cli.commands
 
 import com.aytel.sd.cli.Environment
-import java.io.File
 
 /**
  * Counts number of lines, words and bytes in input (or in file, given in args).
@@ -18,7 +17,7 @@ class WcCommand: Command() {
                 var lines = 0
 
                 for (name in args) {
-                    val (cbytes, cwords, clines) = count(env.getDirectory(name).toFile().readText())
+                    val (cbytes, cwords, clines) = count(env.getPath(name).toFile().readText())
                     bytes += cbytes
                     words += cwords
                     lines += clines

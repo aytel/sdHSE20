@@ -1,11 +1,7 @@
 package com.aytel.sd.cli.commands
 
 import com.aytel.sd.cli.Environment
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 
 class LsCommandTest {
     @Test
@@ -59,7 +55,7 @@ class LsCommandTest {
     @Test
     fun sameDirectory() {
         val testEnvironment = Environment()
-        testEnvironment.setDirectory(testEnvironment.getDirectory("/src/test/resources").toString())
+        testEnvironment.setDirectory(testEnvironment.getPath("/src/test/resources").toString())
         CommandTester.testCommand(
             LsCommand(),
             listOf(),
@@ -73,7 +69,7 @@ class LsCommandTest {
     @Test
     fun sameDirectoryNoArguments() {
         val testEnvironment = Environment()
-        testEnvironment.setDirectory(testEnvironment.getDirectory("/src/test/resources").toString())
+        testEnvironment.setDirectory(testEnvironment.getPath("/src/test/resources").toString())
         CommandTester.testCommand(
             LsCommand(),
             listOf(),

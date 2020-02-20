@@ -14,10 +14,10 @@ class LsCommand: Command() {
     override fun run(args: List<String>, stdin: String, env: Environment): Pair<Status, String> {
         return when {
             args.isEmpty() -> {
-                list(env.getDirectory(stdin))
+                list(env.getPath(stdin))
             }
             args.size == 1 -> {
-                list(env.getDirectory(args[0]))
+                list(env.getPath(args[0]))
             }
             else -> {
                 Status.ERR to "ls: too many arguments"

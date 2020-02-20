@@ -8,7 +8,7 @@ import com.aytel.sd.cli.Environment
 class ExternalCommand {
     fun runCmd(cmdName: String, args: List<String>, stdin: String, env: Environment): Pair<Command.Status, String> {
         val processBuilder = ProcessBuilder(mutableListOf(cmdName).apply { addAll(args) })
-        processBuilder.directory(env.getDirectory().toFile())
+        processBuilder.directory(env.getPath().toFile())
         processBuilder.environment().putAll(env.map())
         val process = processBuilder.start()
         process.outputStream.write(stdin.toByteArray())

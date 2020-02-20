@@ -25,7 +25,7 @@ class CdCommand: Command() {
     }
 
     private fun changeDirectory(env: Environment, pathAddition: String): Pair<Status, String> {
-        val newDirectory: Path = env.getDirectory(pathAddition)
+        val newDirectory: Path = env.getPath(pathAddition)
         return if (!newDirectory.toFile().exists()) {
             Status.ERR to "$newDirectory does not exist"
         } else if (!newDirectory.toFile().isDirectory) {

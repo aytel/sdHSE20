@@ -1,7 +1,6 @@
 package com.aytel.sd.cli.commands
 
 import com.aytel.sd.cli.Environment
-import java.io.File
 
 /**
  * Returns text of given file.
@@ -13,7 +12,7 @@ class CatCommand: Command() {
         } else {
             try {
                 val result = args.joinToString("\n") {
-                    env.getDirectory(it).toFile().readText()
+                    env.getPath(it).toFile().readText()
                 }
                 Status.OK to result
             } catch (e: Exception) {
